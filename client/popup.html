@@ -1,0 +1,113 @@
+<html>
+  <head>
+    <title>Water Popup</title>
+    <style>
+      :root {
+        --border-radius: 4px;
+        --border: 1px solid rgb(161, 161, 161);
+        --spacing: 5px;
+      }
+
+      body {
+        height: 400px;
+        width: 600px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+
+      label {
+        font-size: 24px;
+        margin-bottom: var(--spacing);
+      }
+
+      #email-form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 60%;
+      }
+
+      input {
+        height: 35px;
+        width: 100%;
+        padding: var(--spacing);
+        margin: var(--spacing);
+        border-radius: var(--border-radius);
+        border: var(--border);
+      }
+
+      textarea {
+        resize: none;
+        width: 100%;
+        padding: var(--spacing);
+        margin: var(--spacing);
+        border-radius: var(--border-radius);
+        border: var(--border);
+      }
+
+      button {
+        margin-top: 15px;
+        height: 35px;
+        width: 100%;
+        background: #3169cf;
+        border: none;
+        border-radius: var(--border-radius);
+        color: white;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background: #2454af;
+      }
+
+      button:active {
+        background: rgb(19, 61, 139);
+      }
+
+      .sending,
+      .sending:hover,
+      .sending:active {
+        background: #03948d;
+        cursor: not-allowed;
+      }
+
+      .sent,
+      .sent:hover,
+      .sent:active {
+        background: #08ad3f;
+        cursor: not-allowed;
+      }
+    </style>
+  </head>
+  <body>
+    <label for="email-form">Simple SMTP Form</label>
+    <form
+      id="email-form"
+      method="POST"
+      action="https://simple-smtp.fly.dev/send-mail"
+    >
+      <!-- The VALUE field of the 'token' element gets added from the 'functions.js 'file -->
+      <input type="hidden" name="token" id="token" />
+
+      <input
+        type="email"
+        name="recipient"
+        placeholder="Recipient Email"
+        required
+      />
+
+      <textarea
+        name="message"
+        placeholder="Message"
+        rows="12"
+        required
+      ></textarea>
+
+      <button type="submit" id="submit-button">Send Email</button>
+    </form>
+    <script src="./functions.js"></script>
+  </body>
+</html>
